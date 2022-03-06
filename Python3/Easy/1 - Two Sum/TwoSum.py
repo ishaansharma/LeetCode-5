@@ -3,4 +3,4 @@ class Solution:
         for i in range(len(nums)):
             for index in range(i + 1, len(nums)):
                 if target - nums[i] == nums[index]:
-                    return i, inde
+                    return i, index
