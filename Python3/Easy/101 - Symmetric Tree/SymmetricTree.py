@@ -31,6 +31,7 @@ class Solution(object):
 
         
  # ITERATIVE METHOD
+
 class Solution(object):
     def isSymmetric(self, root):
         """
