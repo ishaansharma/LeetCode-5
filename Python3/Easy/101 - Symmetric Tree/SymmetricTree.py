@@ -28,3 +28,31 @@ class Solution(object):
             return self.isMirror(left.left, right.right) and self.isMirror(left.right, right.left)
         else:
             return False
+
+        
+ # ITERATIVE METHOD
+class Solution(object):
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if root is None:
+            return True
+
+        stack = [[root.left, root.right]]
+        
+        while len(stack) > 0:
+            l, r = stack.pop()
+            
+            if l is None and r is None:
+                continue
+            if l is None or r is None:
+                return False
+            if l.val == r.val:
+                stack.append([l.left, r.right])
+                stack.append([l.right, r.left])
+            else:
+                return False
+        return True
+    
