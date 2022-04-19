@@ -44,4 +44,3 @@ class Solution:
                 self.rangeSum(root.right, low, high)
             elif root.val > high and root.left:
                 self.rangeSum(root.left, low, high)
-    
