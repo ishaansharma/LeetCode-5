@@ -21,3 +21,25 @@ class Solution(object):
             self.postorder(root.left, res)
             self.postorder(root.right, res)
             res.append(root.val)
+
+       
+# ITERATIVE
+class Solution(object):
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        res, stack = [], [(root, False)]
+        
+        while stack:
+            node, visited = stack.pop()
+            if node:
+                if visited:
+                    res.append(node.val)
+                else:
+                    stack.append((node, True))
+                    stack.append((node.right, False))
+                    stack.append((node.left, False))
+        return res
+    
