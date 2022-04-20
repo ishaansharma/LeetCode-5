@@ -8,6 +8,7 @@ class Solution:
                 array += char.lower()
         return array[::-1] == array
     
+    
 # 2nd Solution
 class Solution:
     def isPalindrome(self, s: str) -> bool:
