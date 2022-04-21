@@ -16,7 +16,7 @@ class Solution:
                 return middle
         return -1
 
-# New Solution, new solution prevents overflow with other programming languages such as Java and C++ that has bounded integers (2^32). 
+# New Solution, new solution prevents overflow with other programming languages such as Java and C++ that has bounded integers (2^31). 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         l, r = 0, len(nums) - 1
