@@ -1,4 +1,5 @@
-# Time Complexity: 0(N),
+# Time Complexity: O(rc), where r stands for the amount of rows and c stands for the amount of columns.
+# Space Complexity: O(rc)
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         rows =  collections.defaultdict(set)
