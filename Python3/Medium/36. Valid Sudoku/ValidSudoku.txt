@@ -14,4 +14,5 @@ Only the filled cells need to be validated according to the mentioned rules.
 Thought Process 
 I will have to check each value at each row for any repetition in any of the row. Check each column and subbox for any repetitions as well.
 
-If we are checking for distinct values, maybe I can use a hash set? If there is a value that repeats, I can return False, otherwise continue.
+If we are checking for distinct values, maybe I can use a hash set? If there is a value that repeats, I can return False, otherwise continue iterating through the square.
+To find the subsquares, I can divide the rows and columns by 3. 
