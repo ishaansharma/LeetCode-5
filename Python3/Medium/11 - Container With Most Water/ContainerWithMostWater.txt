@@ -1,0 +1,27 @@
+11. Container With Most Water
+
+  You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+  Find two lines that together with the x-axis form a container, such that the container contains the most water.
+  Return the maximum amount of water a container can store.
+
+  Notice that you may not slant the container.
+
+  Constraints:
+       - n == height.length
+       - 2 <= n <= 3 * 10^4
+       - 0 <= height[i] <= 3 * 10^4
+
+
+Brute Force Approach                      Optimal Approach
+Time Complexity - O(n^2)                  Time Complexity - O(n)
+Space Complexity - O(1)                   Space Complexity - O(1)
+
+
+Thought Process 
+  - In order to solve this problem, I would first want to cover the maximum amount of area as possible first.
+    - To cover the maximum amount of area, I can use the two pointers approach: one pointer at the front and the other pointer at the back.
+    - Each time the loop iterates, I would first store the maximum value as zero and compare it to the current area between the two pointers. 
+      - area = (j - i) * min(height[i], height[j])
+    - After calculating the area, I would want to shift to the left pointer to the right or the right pointer to the left, depending on which pointer is smaller.
+  - After breaking out of the while loop, I would return the variable that was used to store the maximum area, 'res'.
+    
