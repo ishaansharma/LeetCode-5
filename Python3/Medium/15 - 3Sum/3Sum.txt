@@ -1,0 +1,23 @@
+15. 3Sum
+
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+
+
+
+Time Complexity - O(nlogn + n^2), where nlogn is from sorting and the n^2 is from the nested for loops. The time complexity is condensed to O(n^2)
+Space Complexity - O(1) or O(n), depending on the library that is used
+
+Thought Process
+- Iterate through array 'nums' using a for loop
+  - Create a if statement that checks the previous value of i and compares it to the current value of i. If it is equal, the for loop will go to the next instance,
+  since we do not want duplicates. Furthermore, it should also check 0 < i, because the array at index 0 has no previous value.
+  - Create two pointers, left and right, which will range from the next index of i and the final index of the array. 
+  - I can find the current sum by adding the nums[i] and nums at the left index and nums at the right index.
+  - Use a while loop to iterate between the two pointers. 
+    - If the current sum is too small, add one to the left index to make the current sum bigger.
+    - If the current sum is too big, add one to the right index to make the current sum smaller.
+  - If the current sum is equal to zero, I can append all three values as a list to another list that will be used to store all the list values.
+  - Then, add 1 to l to continue iterating. If the current value of l is still equal to the previous value of l, continue adding one to the value of l. If the l
+  becomes bigger than the r, it will break out of the while loop.
+- Once the while loop is completed iterated through, return the list that was used to store all the lists, which is 'res'.
