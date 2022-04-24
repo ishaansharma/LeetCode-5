@@ -1,0 +1,20 @@
+167. Two Sum II - Input Array Is Sorted
+
+Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+Your solution must use only constant extra space.
+
+Time Complexity: O(n)
+Space Complexity: O(1), no extra memory is needed except for the two pointers
+
+Thought Process
+- Get two indexes. One set to the beginning to the array and one set to the back of the array. 
+
+  - Find the sum of the number at the beginning and the number at the end of the array. 
+    - If the sum of the two numbers is bigger than the target, I would want to find an even smaller number, therefore I can subtract 'r' (rightmost and
+    greatest index) by one, leading the sum to become smaller as well.   
+    - If the sum of the two numbers is smaller than the target, I would want to find an even bigger number, therefore I can add one to 'r' (leftmost and 
+    smallest index), leading the sum to become bigger.
+    - I can iterate through this list, until we find the two integers that would result in the target value. Then I add one to 'l' and one to 'r' and then 
+    return the two indexes as a list.
