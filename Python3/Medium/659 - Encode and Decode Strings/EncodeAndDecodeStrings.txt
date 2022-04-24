@@ -1,0 +1,17 @@
+659 · Encode and Decode Strings
+
+Description
+Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.
+Please implement encode and decode
+
+
+Time Complexity - O(n), where n stands for the total amount of characters
+
+Thought Process
+Encode - For each string in the list of strings, append the length of the string and a random symbol, and then the string to a new list.
+
+Decode - Set two points, i and j. One pointer will be set to the length of the string, the other pointer will be on the index after the first pointer. i and j 
+would be used to find the length of the string. By using str[j + 1 : j + length + 1], we can find the string, because since j is at the symbol '#', j+1 would
+be the first letter of the string, and j + length + 1 would be the index after the last character of the string (up to but not including). I would append this
+string to a list. Then, I will set 'i' to the index after the last character of the string. The while loop would continue this until int 'i' breaks out of the
+while loop, and at last, it would append the list 'res' that was used to store all of the strings.
