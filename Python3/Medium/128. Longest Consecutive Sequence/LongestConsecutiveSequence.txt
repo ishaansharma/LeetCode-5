@@ -1,0 +1,16 @@
+128. Longest Consecutive Sequence
+
+Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+You must write an algorithm that runs in O(n) time.
+
+Time Complexity - O(n)
+Space Complexity - O(n), where n is the size of the array
+
+Thought Process 
+- Create a set version of the array. 
+- Iterate through the array.
+  - Since I can find out the start of the consecutive sequence by first checking if any number before an number exists by using the set, I can use
+    a while loop to iterate through the sequence and break out of the for loop when the next number doesn't exist in the set. 
+  - I can keep track of the length by using two variables, longest and length. Longest would be used to track the longest consecutive elements sequence, 
+    while length will be used to track the current consecutive elements sequence. I can compare long and longest to each other using the max() method.
+  - After iterating through the entire array, I can return the variable 'longest'.
