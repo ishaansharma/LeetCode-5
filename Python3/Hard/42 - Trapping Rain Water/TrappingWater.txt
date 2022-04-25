@@ -1,0 +1,28 @@
+42. Trapping Rain Water
+
+Given n non-negative integers representing an elevation map 
+where the width of each bar is 1, compute how much water it 
+can trap after raining.
+
+
+ 
+ Time Complexity - O(n), where n is the length of the array
+ Space Complexity - O(1)
+ 
+ 
+Thought Process 
+- I want to find out how much water is trapped, which I can do by using two pointers.
+  - 'l' will be the left pointer and 'r' will be the right pointer
+- While I am iterating through the loop, I want to move the pointer with the lower height,
+because this would allow in water being trapped.
+- To find the amount of water being trapped, I can subtract the maximum height by the current
+value of the pointer that it is on.
+  - If the value of the left pointer is smaller than the right pointer, 
+    - I can do 'maxL - height[l]' to find the water that is trapped, where
+    maxL symbolizes the maximum height at the left side and height[l]
+    being the current height at index[l] (left side).
+  - If the value of the right pointer is smaller than the left pointer,
+    - I can do 'maxR - height[r]' to find the water that is trapped, where 
+    maxR symbolizes the maximum height at the right side and height[r] being 
+    the current height at index 'r' (right side).
+ 
