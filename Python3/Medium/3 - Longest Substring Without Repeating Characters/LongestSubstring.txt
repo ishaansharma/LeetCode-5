@@ -1,0 +1,62 @@
+3. Longest Substring Without Repeating Characters
+
+Given a string s, find the length of the longest substring without repeating characters.
+
+
+Time Complexity - O(n), where 'n' is the length of the input list
+Space Complexity - O(n), where 'n' is the length of the input list.
+  - Length of set depends on 'n'
+  
+  
+Thought Process
+- For this question, I can use a sliding window approach.
+  - I can set one pointer, 'l', to the beginning of the input array, and the other pointer, 'r', will iterate
+  through the beginning to the end of the input array.
+  - To check if a letter has been repeated, I can use a set. 
+- I want to minimize the width of the window. 
+  - If a duplicated letter has been detected at point 'r', I can use a while
+  loop to delete the character at index 'l' in the set and then move 'l' one 
+  to the right, until the character at index 'r' is no longer detected in the set.
+- To find the maximum length of the substring, I can use the max function to detect if the 
+  current string is bigger than the longest string.
+    - I can compare 'maxL', which is the maximum length, and 'r - l + 1', which is 
+    the current length of the string.
+- After iterating through the entire loop, I can return maxL as my result.
+
+
+Quick Example 
+s = "pwwkew"
+For r in len(s):
+1) Add 'p' to set, maximum length is now set to 1. 
+  - Set is ('p').           
+  - Substring is 'p'
+2) Add 'w' to set, maximum length is now set to 2.
+  - Set is ('p', 'w')
+  - Substring is 'pw'
+3) 'w' is already in the set. Use a while loop to keep deleting until 'w' is no longer detected in the set.
+  Shift l to the right by one.
+  - Set is ('w')
+  - Substring is 'w'
+  Delete once again
+  - Set is ()
+  - Substring is ''
+4) Add 'w' to the set and substring. Current length is 1, and maximum length (2) stays the same.
+  - Set is ('w')
+  - Substring is 'w'
+5) Add 'k' to the set and substring. Current length is 2, and maximum length (2) stays the same.
+  - Set is ('w', 'k')
+  - Substring is 'wk'
+6) Add 'e' to the set and substring. Current length is 3, and maximum length now reflects the current length.
+  - Set is ('w', 'k', 'e')
+  - Substring is 'wke'
+7) 'w' is already in the set. Use a while loop to keep deleting until 'w' is no longer detected in the set.
+  Shift l to the right by one.
+  - Set is ('k', 'e')
+  - Substring is 'ke'
+8) 'w' is no longer in the set. Add w to the set and substring. Current length is 3, and maximum length (3) stays the same.
+  - Set is ('k', 'e', 'w')
+  - Substring is 'kew'
+9) Finally, since r has fully iterated through the length of the string 's', I can finally return the maximum
+length of the substring.
+
+The maximum length of the substring is 3.
