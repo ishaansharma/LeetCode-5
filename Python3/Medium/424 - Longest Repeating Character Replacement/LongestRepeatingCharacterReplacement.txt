@@ -1,0 +1,34 @@
+424. Longest Repeating Character Replacement
+
+You are given a string s and an integer k. You can choose any character of the string 
+and change it to any other uppercase English character. You can perform this operation 
+at most k times. Return the length of the longest substring containing the same letter 
+you can get after performing the above operations.
+
+Time Complexity - O(n), where n is the length of the string
+Space Complexity - O(n), where n is the length of the string.
+
+
+Thought Process 
+- I want the longest substring of the same characters, given 'k' amount of replacements. 
+- Several variables will have to be first initiated.
+  - Dict 'count', which will be used to store a character and how much times the character
+  appeared.
+  - Int 'maxL', which will be stored the maximum length of the substring
+  
+- To solve this question, I can use the two pointers approach.
+  - I can set the left pointer to 0, while the right pointer will be used to iterate through
+  from the beginning to the end of the input string.
+  - If a character has appeared more than 'k' times in the set...
+    - I can reduce the length of the window between the left pointer and the right pointer by
+    using a while loop.
+      - Reduce the count of s[l] (left pointer in the set) in the set 'count' by one.
+      - Shift the left pointer to the right by one.
+    - Check if the character has still appeared more than 'k' times in the set.
+      - If so, keep reducing the count of s[l] and the left pointer until the condition
+      is invalid.
+  - Check if the current length is greater than the maximum length. If so, change the appropriate 
+  values by using the max function.
+  - The right pointer 'r' will keep iterating through the for loop, until finally, it will
+  return the maximum length of the substring, 'maxL'.
+      
