@@ -1,0 +1,67 @@
+76. Minimum Window Substring
+
+Given two strings s and t of lengths m and n respectively, return the minimum window 
+substring of s such that every character in t (including duplicates) is included in 
+the window. If there is no such substring, return the empty string "". The testcases 
+will be generated such that the answer is unique.
+
+A substring is a contiguous sequence of characters within the string.
+
+
+Time Complexity - O(n), where n is the length of the input string
+Space Complexity - O(n)
+
+
+Thought Process
+- I want to return the minimum window substring.
+- As mentioned in the testcase, if there is no substring, return the empty string "".
+  - This is why I would first test this case by checking if 't' is empty.
+    - If so, return "".
+- I would like to initialize two empty hashmaps, countT and window.
+  - countT will be used to store the characters and how much times each character
+  appeared in string 't'.
+    - I will use a for loop to store all the characters in 't'.
+      - countT[s[t]] = 1 + countT.get(s[t], 0)
+        - This will add one to the value of the current letter in 'countT' if it already 
+        exists, else set the value of the current letter to 0, which is the default value.
+  - 'window' will be used later to store the characters from index 'l' to index 'r'.
+  - Variable 'res' will be used to store the characters between index 'l' and index 'r'.
+- Next, I will have to initialize more variables.
+  - have and need will be set to 0 and len(countT), respectively.
+    - 'have' will be used to store the current amount of matches between 'countT' and 'window'.
+    - 'need' is the amount of matches that 'countT' and 'window' will have to equal.
+  - minLength will be used to store the minimum length of the substring, which will be set 
+  to float("infinity").
+    - float("infinity") will be used as the default since we want to find the minimum.
+      - Any value is less than infinity.
+  - I will have to use two pointers.
+    - The left pointer, 'l' will be first set to zero and the right pointer will iterate 
+    through 's', using a for loop.
+- Speaking of for loops, after I initialized all the variables, I can start iterating 
+through string 's'. 
+  - Add the character that index 'r' is currently on to the hashmap 'window'.
+  - Compare window and countT on index 'r'. If both of the characters appeared the same amount
+  of times, I can add matches by one.
+  - Use a while loop with the condition that 'countT' is equal to 'window'.
+    - I want to check if the current length of the substring is less than the 
+    maximum minimum length.
+      - If so, I want to set the current length to be the maximum minimum length.
+      - Then, I want to set 'res' to be [l, r]. This will be the substring between 'l'
+      and 'r'.
+    - Next, since I want to shift the left pointer to the right by one.
+      - I would want to delete this value from the 'window', because this may result in the current
+      amount of matches decreasing.
+        - Check if s[l] is in countT and if s[l] is now less than countT.
+          - If so, I want to subtract the variable 'have' by one, which means that I have
+          one less match.
+    - Shift the left pointer to the right by one.
+- After iterating through the entire length of string 's', I can return the result.
+  - But first, I want to check if the minimum length is still equal to float("infinity"), because
+  the length of the string might not have changed at all since the beginning.
+    - If so, I can return an empty string "", because the substring 't' does not appear in string 's'.
+    - If not, I can set 'l' (left) and 'r' (right) to the res, which is [l, r].
+      - Finally, since 'l' and 'r' are indexes, I want to return the characters that are between
+      the two indexes, inclusive.
+        - Thus, I can return s[l:r+1], which means return the characters between l and r + 1 in
+        string 's'. 
+          - r + 1 because if I would only return up to r, it would not be inclusive.
