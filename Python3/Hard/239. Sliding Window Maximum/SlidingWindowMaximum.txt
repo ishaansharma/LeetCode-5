@@ -2,3 +2,38 @@
 
 You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
 Return the max sliding window.
+
+Time Complexity - O(n)
+Space Complexity - O(n)
+
+
+Thought Process
+- I want to find the maximum element in a given array of integers.
+  - To do this, I can use dequeue.
+    - Why?
+      - Appending and popping from both ends is O(1). This is faster than
+      a list, which uses O(n) time complexity.
+  - I can use two pointers, l and r.
+    - I can store the indexes of the elements in the queue.
+  - If there is a element in the queue, I can check if the current value is greater
+  than the first value in the queue. 
+    - Using the condition (while q and nums[q[-1]] < nums[r]).
+    - If so, I can pop the first element since I only want the maximum value.
+  - Add 'r' to our queue.
+  - To check if 'l' is out of bounds, I can compare if 'l' is greater than q[0].
+    - If so, popleft().
+      - One testcase when this is needed: [1, -1], k = 1.
+  - If the right index, r, is greater than or equal to the k, I can start
+  appending the maximum value to my result.
+    - Shift the left index, 'l', to the right by one.
+  - Every time the loop iterates, I want to shift the right index, 'r', to the
+  right by one.
+  - After breaking out of the while loop when 'r' is equal to the length of 'nums',
+  I can return the result, 'res', which will contain a list of each maximum value
+  inside a group of 'k' elements.
+
+
+Important Terms
+Monotonic Queue - a data structure the elements from front to back
+is strictly decreasing or increasing
+    
