@@ -1,0 +1,32 @@
+155. Min Stack
+
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+
+Implement the MinStack class:
+
+MinStack() initializes the stack object.
+void push(int val) pushes the element val onto the stack.
+void pop() removes the element on the top of the stack.
+int top() gets the top element of the stack.
+int getMin() retrieves the minimum element in the stack.
+
+
+Time Complexity - O(1)
+Space Complexity - O(1)
+
+Thought Process
+- Create two different stacks.
+  - 'stack' will be used to store the original numbers.
+  - 'minStack' will be used to store the least minimum values.
+- For push, I can append for stack. For 'minStack', I want to compare
+the current value to the last value in 'minStack'. 
+  - If the current value is smaller or there are no items in the stack, 
+  append the current value to 'minStack'.
+  - If the last value is smaller, append the last value to 'minStack'.
+- For pop, I can simply use pop().
+- For top, I can return the latest value that was appended to the original
+stack by self.stack[-1].
+- For getMin, I can return the latest value that was appended to the minimum 
+stack by self.minStack[-1].
+  
