@@ -1,0 +1,20 @@
+84. Largest Rectangle in Histogram
+
+Given an array of integers heights representing the histogram's bar height 
+where the width of each bar is 1, return the area of the largest rectangle in the histogram.
+
+ 
+ Time Complexity - O(n)
+ Space Complexity - O(n)
+ 
+ 
+Thought Process
+- I have to return the area of the largest rectangle in the histogram.
+- One thing that I have to note is that this will be a monotonic increasing
+stack.
+ - If the height is less than the previous height, I want to multiply the
+ height by the current index subtracted by the previous index.
+   - Whenever a greater max area is found, set it to the max area variable maxArea.
+ - I can find the previous height and index by appending these two values into my
+ stack.
+- Once I have iterated the input array, I can return the max area, 'maxArea'.
