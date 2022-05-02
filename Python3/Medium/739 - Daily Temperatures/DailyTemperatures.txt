@@ -17,11 +17,11 @@ warmer temperature.
 - Since the stack is going to be monotonic decreasing stack, I can check if the
 current temperature is greater than the temperature on top of the stack.
   - If so, I can pop the top of the stack and take the current day subtracted 
-  by the previous day at the index of the previous day.
+  by the previous day at the index of the previous day and append it to the 
+  result, res.
   - I can continue checking if the current temperature is greater than the 
-  previous temperature until the condition is not fulfilled.
+  previous temperature until the condition is not fulfilled or the stack is empty.
 - After each iteration, I can append the current day and temperature as a list
 to the stack.
 - After completely iterating through the for loop, I can return the result,
-res, which includes the day and the ith day after in which there is 
-a warmer temperature.
+res.
