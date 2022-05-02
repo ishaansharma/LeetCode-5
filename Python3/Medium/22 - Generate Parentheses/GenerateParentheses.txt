@@ -1,0 +1,28 @@
+22. Generate Parentheses
+
+Given n pairs of parentheses, write a function to generate 
+all combinations of well-formed parentheses.
+
+
+Space Complexity - O(2n) -> O(n), where n is the input integer
+
+Thought Process
+- I want to check all possible combinations of well-formed parentheses.
+  - There are constraints that I have to look out for.
+    - The amount of open and closed brackets is equal to 'n'.
+    - There cannot be more closed brackets than open brackets
+    at a given instance.
+- I can use backtracking to solve this problem.
+  - If the amount of open brackets is less than 'n', this means that
+  I can add an open bracket.
+    - I can call the same function again, but this time I have to add 
+    one to the total amount of open brackets, openB.
+  - If the amount of closed brackets is less than the amount of open brackets,
+  this means that I can add an closed bracket.
+    - I can call the same function again, but this time I have to add
+    one to the total amount of closed brackets, closedB.
+  - If the amount of open brackets and closed brackets are both equal to 
+  'n', I can append the brackets in our stack to my result, 'res'.
+  - I can pop my stack to move back in my array to find other combinations
+  of well-formed parentheses.
+- After finding all possible combinations, I can return the result, 'res'.
