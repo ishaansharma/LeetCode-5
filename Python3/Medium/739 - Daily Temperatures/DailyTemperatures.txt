@@ -1,0 +1,27 @@
+739. Daily Temperatures
+
+Given an array of integers temperatures represents the daily temperatures, 
+return an array answer such that answer[i] is the number of days you have 
+to wait after the ith day to get a warmer temperature. If there is no future
+day for which this is possible, keep answer[i] == 0 instead.
+
+
+Time Complexity - O(n)                Space Complexity - O(n)
+  - where n is equal to the length of the array of integers
+  
+  
+Thought Process
+- I want to find the number of days I have to wait after the ith day to get a
+warmer temperature.
+- I can use a stack to solve this problem.
+- Since the stack is going to be monotonic decreasing stack, I can check if the
+current temperature is greater than the temperature on top of the stack.
+  - If so, I can pop the top of the stack and take the current day subtracted 
+  by the previous day at the index of the previous day.
+  - I can continue checking if the current temperature is greater than the 
+  previous temperature until the condition is not fulfilled.
+- After each iteration, I can append the current day and temperature as a list
+to the stack.
+- After completely iterating through the for loop, I can return the result,
+res, which includes the day and the ith day after in which there is 
+a warmer temperature.
