@@ -1,6 +1,37 @@
 74. Search a 2D Matrix
 
-Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:
+Write an efficient algorithm that searches for a value target in an m x n integer matrix . This matrix has the following properties:
 
 Integers in each row are sorted from left to right.
 The first integer of each row is greater than the last integer of the previous row.
+
+
+# First Attempt
+Time Complexity - O(mlogn)
+Space Complexity - O(1)
+
+
+# Second Attempt
+Time Complexity - O(logm + logn)
+Space Complexity - O(1)
+
+
+Thought Process 
+- I want to find a value target in an m x n integer matrix.
+- I want to find what column and what row that the target value is on.
+  - I can find them by using binary search.
+- I know that all of the integers in each row are sorted.
+  - If the target value is less than the first integer in the current row...
+    - I can move the 'bottom' row to the row above the 'middle' row.
+  - If the target value is greater than the last integer in the current row...
+    - I can move the 'top' row to the row below the 'middle' row.
+  - Once I find that the target value is in the current row, I can break out
+  of the while loop.
+- I can apply what I did to find the row to find out what column it is on.
+  - If the 'middle' integer is less than the target, I want a bigger number.
+    - Shift the left pointer, 'l', to the index to the right of 'middle' by one.
+  - If the 'middle' integer is greater than the target, I want a smaller number.
+    - Shift the right pointer, 'r', to the index to the left of 'middle' by one.
+  - If the 'middle' integer is the target, I want to return true.
+  - Otherwise, return False.
+
