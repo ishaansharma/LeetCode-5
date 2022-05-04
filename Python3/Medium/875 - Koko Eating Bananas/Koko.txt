@@ -1,0 +1,33 @@
+875. Koko Eating Bananas
+
+Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. 
+The guards have gone and will come back in h hours. Koko can decide her bananas-per-hour eating 
+speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If 
+the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
+Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.
+Return the minimum integer k such that she can eat all the bananas within h hours.
+
+
+Time Complexity - O(log(maxp)p), where p is the length of the piles
+Space Complexity - O(1)
+
+
+Thought Process 
+- I want to return the minimum speed that Koko can eat the bananas but within h hours.
+- I can use two pointers to solve this question.
+  - The left index, 'l', will be set to 1 and the right index, 'r', will be set to the
+  max in the list.
+- I can start with the speed, called 'k', that is between 'l' and 'r'.
+- To find the total time that Koko takes to eat the bananas in 'k' speed,
+I can take the current amount of banana in the pile divided by 'k', rounded up.
+  - I can add together the time that Koko takes to eat for each pile, called 'time'.
+- If 'time' is less than or equal to 'h' (when the guards come back and the amount of time
+that Koko must finish her bananas before)
+  - This is exactly what I want. I set the result variable, 'res', and compare with the 
+  current speed, 'k', and set 'res' to which speed that is lower.
+    - Then, set the right index, 'r', to the left of 'middle' by one to minimize the window
+    and to look for more possibly an even more smaller speed.
+- If 'time' is greater than 'h',
+  - I can shift the left index, 'l', to the right of 'middle' by one, because I want to increase 
+  the speed that Koko eats so that she can finish the bananas faster before the guards come back.
+- After breaking out of the while loop, I can return the result variable, 'res'.
