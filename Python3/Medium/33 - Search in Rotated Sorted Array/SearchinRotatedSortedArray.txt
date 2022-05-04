@@ -13,3 +13,30 @@ You must write an algorithm with O(log n) runtime complexity.
 Time Complexity - O(logn)                   Space Complexity - O(1)
 
 
+Thought Process
+- I want to return the index of target in a rotated sorted array.
+- I can use two pointers.
+  - Left pointer, 'l', and right pointer 'r'.
+  - Middle pointer, 'm'
+- First, I have to check which sorted portion that the target is in.
+  - If the target is in the left sorted portion,
+    - Check if the target is less than nums[l] and if the target is greater than nums[m],
+      - If either of these conditions is true,  
+        - I know that the target is not between nums[l] and nums[m], so I have to minimize the window
+        and shift the left pointer, 'l', to the right of 'm' by one.
+      - If both of these conditions are false,
+        - I know that that the target is between nums[l] and nums[m], so I have to minimize the window
+        and shift the right pointer, 'r', to the left of 'm' by one.
+  - If the target is in the second sorted portion,
+    - I want to check if the target is greater than nums[r] or the target is less than nums[m],
+      - If either of these conditions is true, 
+        - I know that the target is not between nums[m] and nums[r], so I have to minimize the window
+        and shift the right pointer, 'r', to the left of middle by one.
+      - If both of these conditions are false,
+        - I know that the target is between nums[m] and nums[r], so I have to minimize the window 
+        and shift the left pointer, 'l', to the right of middle by one.
+- Check every time the loop loops if the target is equal to the value at the middle pointer.
+  - If so, return the middle index, 'm'.
+- If the left pointer is greater than the right pointer, it is out of bounds and the while loop breaks.
+  - When this happens, I know that the target is not in the array, so I can return '-1'.
+        
