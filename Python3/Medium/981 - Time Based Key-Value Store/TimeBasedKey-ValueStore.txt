@@ -1,0 +1,47 @@
+981. Time Based Key-Value Store
+
+Design a time-based key-value data structure that can store multiple values for the same key at 
+different time stamps and retrieve the key's value at a certain timestamp.
+
+Implement the TimeMap class:
+
+TimeMap() Initializes the object of the data structure.
+void set(String key, String value, int timestamp) Stores the key key with the value value at the given time timestamp.
+String get(String key, int timestamp) Returns a value such that set was called previously, with 
+timestamp_prev <= timestamp. If there are multiple such values, it returns the value associated with the largest timestamp_prev. If there are no values, it returns "".
+
+Time Complexity - O(logn)                     Space Complexity - O(1)
+
+
+Thought Process 
+__init__ 
+  - Here, I initialized my dictionary.
+
+set
+  - I want to first check if the key is in the dictionary.
+    - If it is not, I want to first set the value to a blank list.
+  - Next, I want to store the key with the value at a given timestamp.
+    - Set 'key' as the key. 
+    - Set 'value' and 'timestamp' together in a list as the value.
+
+get 
+  - I want to set the result, 'res', as an empty string.
+    - Why?
+      - For the case when there are no values
+  - To check if the key is in the dictionary, I can call the 
+  get function, (self.hashmap.get(key, []), which will be set to 'values'.
+    - Why '[]'?
+      - If there the key is not in the dictionary, values will be set to []
+      and the loop will end since there is nothing in the list and return "".
+  - Use two pointers.
+    - Left pointer, 'l', and right pointer, 'r'.
+    - Middle pointer found by adding the two pointers together and dividing by 2.
+  - Now, I use a while loop to find the value.
+    - If the timestamp is less than or equal to the timestamp that I want to find, 
+      - I can set 'values' to the current value.
+      - To minimize the window, I want to move 'l' to the right of 'm' by one to find
+      a timestamp as close as possible to the timestamp that I want to find.
+    - Else if the timestamp is greater than the timestamp I want to find,
+      - I want to move 'r' to the left of 'm' by one.
+  - After breaking out of the while loop, I want to return the results variable,
+  'values'.
