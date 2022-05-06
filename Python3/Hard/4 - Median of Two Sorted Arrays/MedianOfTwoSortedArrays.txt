@@ -1,0 +1,36 @@
+4. Median of Two Sorted Arrays
+
+Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+The overall run time complexity should be O(log (m+n)).
+
+
+Time Complexity - O(log(m + n))                       Space Complexity - O(1)
+
+
+Thought Process
+- To find the median of the two sorted arrays, I want to first initialize some variables.
+  - 'sumLen', which is the sum of the lengths of the two arrays together
+  - 'half', which will be used to find the half of 'sumLen'
+  - 'a', 'b' which will be used as a placeholder for nums1 and nums2
+- I want the array with the least length to be set as 'a'
+- Two pointers
+  - left pointer 'l' and right pointer 'r'
+  - 'i' is the middle pointer for the first array, 'a'
+  - 'j' is the middle pointer for the second array, 'b'
+- I need to find the values at and after on the middle pointers for 'a' and 'b'
+  - I can set 'aLeft' to a[i] and 'bLeft' to a[j]
+    - If either of these variables are out of bounds, I can set them to negative infinity (float("-inf"))
+  - I can set 'aRight' to a[i + 1] and 'bRight' to b[i + 1]
+    - If either of these variables are out of bounds, I can set them to infinity (float("inf"))
+- Next, I have to check if 'aLeft' is less than or equal to 'bRight' and 'bLeft' is less than or equal to 'aRight'
+    - If both of these conditions evaluate to true, 
+      - Check if 'sumLen' has a remainder
+        - If it doesn't, I can compare 'aRight' and 'bRight' and return whichever is smaller
+        - Otherwise return the minimum of 'aLeft' and 'bLeft' added by the maximum of 'aRight' and 'bRight' divided by 2
+    - If 'aLeft' is greater than 'bRight'
+      - This means I need a smaller value for 'aLeft', so I shift the right pointer, 'r', to the left of 
+      the middle pointer 'i', by one
+    - Otherwise, if 'bLeft' is greater than 'aRight'
+      - This means I need a bigger value for 'aRight', so I shift the left pointer, 'l', to the right
+      of the middle pointer 'i' by one.
