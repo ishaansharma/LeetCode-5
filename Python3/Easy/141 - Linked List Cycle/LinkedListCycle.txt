@@ -1,0 +1,22 @@
+141. Linked List Cycle
+
+Given head, the head of a linked list, determine if the linked list has a cycle in it.
+
+There is a cycle in a linked list if there is some node in the list that can be reached 
+again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
+
+Return true if there is a cycle in the linked list. Otherwise, return false.
+
+
+Time Complexity - O(n)                    Space Complexity - O(1)
+
+Thought Process
+Two approaches for this problem
+  1) Checking in a hashmap to see if a node has appeared more than once
+  2) Using slow and fast pointers
+ 
+- I know that the fast pointer will eventually catch up to the slow pointer 
+ if the loop has a cycle.
+  - I can set fast to move two nodes at once and slow to move a node at a time.
+    - When fast is equal to slow, I can return true.
+- If the loop does not have a cycle, fast will return None, and I can return False.
