@@ -1,0 +1,28 @@
+143. Reorder List
+
+You are given the head of a singly linked-list. The list can be represented as:
+
+L0 → L1 → … → Ln - 1 → Ln
+Reorder the list to be on the following form:
+
+L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+
+Time Complexity - O(n)                    Space Complexity - O(1)
+where n is equal to the length of the singly linked list
+
+Thought Process
+- To order a singly linked list, I need to have two pointers, 'slow' and 'fast'.
+  - What are they for?
+    - To divide the list into two halves. 
+      - 'slow' will be at the first half. I do not need to do anything here.
+      - 'fast' will be at the second half. I have to reverse the list here.
+- After setting up the pointers, I will need to reverse the second portion of the list.
+- After reversing the second portion of the list, I have to merge the two portions
+of the list together.
+  - How do I merge them together?
+    - By taking the first node of the first list, redirecting it to the first
+    node of the second list, then redirecting that node to the next node of the first list.
+      - I will have to keep redirect each of the node in the second list.
+  
