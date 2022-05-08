@@ -1,0 +1,22 @@
+19. Remove Nth Node From End of List
+
+Given the head of a linked list, remove the nth node from the end of the list and return its head.
+
+Time Complexity - O(n)                  Space Complexity - O(1)
+
+Thought Process
+- I want to remove the nth node from the end of the list.
+- I can do this by having two pointers, 'left' and 'right'.
+  - 'left' will start at head.
+  - 'right' will be at nth nodes away from the right of 'left'.
+- I want to shift 'left' and 'right' to the right by one.
+  - When 'right' reaches the end of the list, 'left' will be
+  n'th nodes away from the end of the list.
+- However, I cannot delete 'left', because I would need the previous
+node of 'left'.
+  - I can instead set a dummy node at the beginning, where 'left'
+  will start at.
+  - When 'right' reaches the end of the list, 'left' will be at
+  the node before the node that I want to delete.
+- To delete the node, I can set 'left.next = left.next.next'.
+- Next, I want to return the head, so I return 'dummy.next'.
