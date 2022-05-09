@@ -4,3 +4,33 @@ You are given two non-empty linked lists representing two non-negative integers.
 The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+
+Time Complexity - O(n)                  Space Complexity - O(n)
+
+Thought Process
+- I want to add together the linked lists and return the result as a linked list.
+- There are several edge cases that I have to keep track of.
+  1) If one linked list is longer than the other
+  2) If I still have to carry over a number but both of the linked lists end
+
+- To start, I can first make a dummy node and set the current pointer 'cur' at this
+node as well. 
+  - I want to check if l1, l2, or the carry is any number greater than 0.
+    - If any of these conditions is true, I have to keep iterating over the while loop.
+  - Next, I want to initialize two variables, 'v1' and 'v2'. ('v' stands for value)
+    - 'v1' and 'v2' will keep track of the value that the current pointers are on.
+      - If the current value is null, I can set 'v1' or 'v2' as 0.
+  - Now, I can add the two values together.
+    - I have to find the carry and the digit at the ones place.
+      - I can find the carry by taking the sum and finding the digit at the tenths place value, by
+      using floor division.
+      - I can find the digit at the ones place value, by using the modulus operator.
+    - I have to set the 'cur' pointer to point to the digit at the ones place.
+  - Finally, I have to update the pointers.
+    - I can move the 'l1', 'l2', and 'cur' pointer to the right.
+    - However, I have to check if 'l1' or 'l2' is None.
+      - If they are, I don't want to move them to the right anymore, as that will result in a error.
+      - To fix this, I can set 'l1' or 'l2' to None if that happens.
+- After breaking out of the while loop, I can return the sum as a linked list by returning 'dummy.next'.
+
