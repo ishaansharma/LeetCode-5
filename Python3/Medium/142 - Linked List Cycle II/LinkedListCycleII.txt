@@ -1,0 +1,31 @@
+142. Linked List Cycle II
+
+Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.
+There is a cycle in a linked list if there is some node in the list that can be reached again by continuously 
+following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer 
+is connected to (0-indexed). It is -1 if there is no cycle. Note that pos is not passed as a parameter.
+Do not modify the linked list.
+
+Time Complexity - O(n)            Space Complexity - O(1)
+
+Thought Process
+- I want to find the node where the cycle begins.
+  - To do this, I can use Floyd's cycle detection.
+- First, I want to make two pointers, 'slow' and 'fast'.
+  - I want to find the node when these two nodes intersect.
+  - If I can't find the node because the loop ends, I can
+  return null.
+- Once I have the node, I can set another slow pointer called 'slow2' at 
+the head and find when the two slow pointer, 'slow' and 'slow2' intersect.
+  - If I find the node, I can return 'slow' as the position.
+
+Why does this work?
+Take the two pointers, slow and fast.
+The fast pointers move two times as faster as slow.
+  - Thus, the amount of distance that 'slow' covers is x + y and
+  the amount of distance that 'fast' covers is 2(x + y).
+    - where x equals the length before starting the cycle and y
+    equals the length of the cycle.
+  - From the node where the two pointers converge, if I were to set
+  another pointer at the head 'slow2', the two pointers 'slow' and
+  'slow2' will converge at the start of the cycle.
