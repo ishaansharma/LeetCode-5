@@ -1,0 +1,18 @@
+136. Single Number
+
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+Time Complexity - O(n)                Space Complexity - O(1)
+
+Thought Process
+- To solve this question efficiently, I can use the XOR operator.
+  - What does the XOR operator do?
+    - Takes a integer as a binary number.
+      - Compares the integer with another integer (also as binary number)
+        - Say the first binary number is '101' and the second binary number is '001'
+          - XOR compares the digit in each place value.
+            - If the digit is equal to each other (1 = 1 or 0 = 0), the digit becomes 0.
+            - If the digit isn't equal to each other (0 != 1, 1 != 0), the digit becomes 1.
+          - Thus, the result would be '100'.
+- Compare each number with XOR operator and return the final result.
