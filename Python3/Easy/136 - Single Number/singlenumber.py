@@ -1,3 +1,4 @@
+# First Attempt - Apr. 6
 class Solution(object):
     def singleNumber(self, nums):
         """
@@ -15,3 +16,14 @@ class Solution(object):
         position = value_list.index(1)
         return key_list[position]
             
+# New 
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        for i in range(1, len(nums)):
+            nums[0] ^= nums[i]
+        return nums[0]
+    
