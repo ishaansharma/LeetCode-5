@@ -1,0 +1,29 @@
+146. LRU Cache
+
+Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+void put(int key, int value) Update the value of the key if the key exists. 
+  Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+The functions get and put must each run in O(1) average time complexity.
+
+
+Time Complexity - O(1)              Space Complexity - O(n)
+
+Thought Process
+- I want to solve this question with doubly linked lists and hashmaps.
+  - Linked lists will be used to delete the least recently used cache as well
+    and addding key-value pairs to the hashmap.
+  - The key-value pairs will be stored using the hashmap.
+- If I want to get a value, I can delete and then add the key-value pair to move
+them to the front, then return the value.
+  - If the value is not in the hashmap, I can return -1.
+- If I want to put a value, I want to check if the key is in the hashmap.
+    - If it is, I want to delete the key-value pair associated with that key.
+  - Add the key-value pair to the hashmap. 
+  - Check if the length of the hashmap is greater than the capacity.
+    - If it is, delete the first item in the linked list and the hashmap.
+    
