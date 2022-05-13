@@ -3,3 +3,14 @@
   Given the root of a binary tree, return the length of the diameter of the tree.
   The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
   The length of a path between two nodes is represented by the number of edges between them.
+
+
+Time Complexity - O(n)              Space Complexity - O(n)
+
+Thought Process
+- In order to solve this question, I will use recursion postorder DFS.
+  - I will check the bottom nodes first and slowly traverse my way up.
+- After visiting both children of a subtree, I can find the maximum diameter
+by adding the height of the left side and the height of the right side.
+- I will repeat this for each subtree in the tree and finally the tree 
+at the end.
