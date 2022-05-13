@@ -1,0 +1,42 @@
+104. Maximum Depth of Binary Tree
+
+  Given the root of a binary tree, return its maximum depth.
+  
+  A binary tree's maximum depth is the number of nodes along the longest 
+  path from the root node down to the farthest leaf node.
+
+  Constraints:
+    - The number of nodes in the tree is in the range [0, 104].
+    - -100 <= Node.val <= 100
+
+
+Time Complexity - O(n), where 'n' is the amount of nodes
+Space Complexity - O(h), where h is the height of the binary tree 
+
+Thought Process
+- I have three different ways to find the maximum depth.
+  1) Recursive DFS
+  2) Iterative DFS
+  3) Iterative BFS
+
+1) Recursive BFS
+  - I want to check the maximum depth of the left subtree,
+  then the maximum depth of the right subtree. 
+    - I will increment by one to whichever subtree that has the greater depth.
+2) Iterative BFS
+  - This time for iterative BFS, I want to use a stack. 
+    - The stack will keep track of the node and its depth.
+  - Everytime I am at a node, I want to append both the left and right node and 
+  its depth to the stack.
+    - If the value that was appended was null, the loop will pop it and skip over it.
+  - When I pop a node, I want to find the greatest height, so I can compare it
+  to a height variable, 'res', which is initially set as 0.
+  - After traversing the entire tree, I want to return the maximum height variable, 'res'.
+3) Iterative DFS
+  - For iterative DFS, I want to traverse the tree by levels.
+    - Thus, I need a queue to pop left of the stack.
+      - Why do I need to pop left?
+        - The top levels of the tree will be in front of the stack, while the bottom levels
+        of the tree will be in the back of the stack.
+  - After traversing through one level of the tree, I want to add one to the level variable, 'level'.
+  
