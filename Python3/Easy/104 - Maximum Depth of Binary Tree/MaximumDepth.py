@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 
-# RECURSIVE SOLUTION
+# RECURSIVE DFS
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
