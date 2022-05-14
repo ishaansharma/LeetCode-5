@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 
-# 1ST ATTEMPT
+# 1ST ATTEMPT BY MYSELF
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         def height(node):
