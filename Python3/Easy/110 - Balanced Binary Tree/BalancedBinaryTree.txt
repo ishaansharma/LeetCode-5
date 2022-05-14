@@ -1,0 +1,19 @@
+110. Balanced Binary Tree
+
+  Given a binary tree, determine if it is height-balanced.
+  For this problem, a height-balanced binary tree is defined as:
+  a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+  
+  
+Time Complexity - O(n), where n is the amount of nodes          Space Complexity - O(h), where h is the height
+
+
+Thought Process
+- For this question, the question asks a height-balanced binary tree is when
+the left and right subtrees differ in height no more than 1.
+- Therefore, I want to use recursion DFS to work my way up and find the height
+of the left side and the right side.
+  - If these two sides subtracted by each other is ever greater than 1, I can
+  return False.
+  - Otherwise, if the condition is never valid, I can return True.
+  
