@@ -1,0 +1,24 @@
+572. Subtree of Another Tree
+
+  Given the roots of two binary trees root and subRoot, return true if there is a 
+  subtree of root with the same structure and node values of subRoot and false otherwise.
+
+  A subtree of a binary tree tree is a tree that consists of a node in tree and all of this 
+  node's descendants. The tree tree could also be considered as a subtree of itself.
+
+
+Time Complexity - O(n * h), where n is the amount of nodes and h is the height of the tree
+Space Complexity - O(1) 
+
+
+Thought Process
+- By reading the question, there are _ important steps.
+  - Use DFS to find the node where the value of the root and the value of the subroot
+  are equal.
+    - If they are equal, then check both the root's and subroot's left and right children.
+      - If they match each other, return True.
+    - If they do not match each other, keep searching through the tree for another match.
+      - If there is no matches, return False.
+  - While searching through the tree, there is one test case I have to keep track of.
+    1) If the value of the root or the subroot is Null,
+      - Return False
