@@ -12,7 +12,7 @@ Space Complexity - O(1)
 
 
 Thought Process
-- By reading the question, there are _ important steps.
+- By reading the question, there are a few important steps.
   - Use DFS to find the node where the value of the root and the value of the subroot
   are equal.
     - If they are equal, then check both the root's and subroot's left and right children.
