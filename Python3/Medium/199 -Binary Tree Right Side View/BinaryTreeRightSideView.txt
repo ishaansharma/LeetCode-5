@@ -1,0 +1,30 @@
+199. Binary Tree Right Side View
+
+  Given the root of a binary tree, imagine yourself standing on the right side of it, 
+  return the values of the nodes you can see ordered from top to bottom.
+
+
+Time Complexity - O(n)                    Space Complexity - O(n)
+  - where n is the amount of nodes in the tree
+  
+
+Thought Process
+- I want the right side view of a tree.
+- What immediately came to mind is BFS.
+  - First, check if there is a right node.
+    - Add the node to the stack
+  - Next, check if there is a left node.
+    - If there is already a right node in the same level, I want to ignore this node.
+    - Add the node to the stack.
+      - Why would I need to add the left node if I already have the right node?
+        - Both of the children of the right subtree might be null.
+          - If that happens, then I would want to check the children of the left subtree.
+
+- How would I return the result?
+  - Initialize a list variable, 'res'.
+  - The stack is going to have two elements, the node and the depth.
+  - The depth will start at 0.
+  - If the depth is equal to the length of 'res', this means that a node at the current level
+  has not been added yet.
+    - Therefore, I can append the value of the node to 'res'.
+ 
