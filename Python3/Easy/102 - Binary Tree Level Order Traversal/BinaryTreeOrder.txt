@@ -1,0 +1,23 @@
+102. Binary Tree Level Order Traversal
+
+Given the root of a binary tree, return the level order traversal of 
+its nodes' values. (i.e., from left to right, level by level).
+
+
+Time Complexity - O(n)            Space Complexity - O(n)
+- where n is the amount of nodes
+
+Thought Process
+- I want to return the level order traversal of its nodes' values.
+  - Immediately, I think of breadth first search.
+- I first want to create a list that will store all the nodes' values, 
+called 'res'.
+- As seen in the examples, there are lists in the list, each representing a level in the tree.
+  - Thus, everytime I move to a new level, I want to create a temporary list, 'temp' that
+  will store the nodes' values in the level.
+- I also want to check each left and right node of the current node.
+  - If it is null, I do not want to store it, otherwise append it to 'temp'.
+- Once the nodes' values are stored in 'temp', I want to append this list to the main list.
+  - Next level, 'temp' will be empty and the process will repeat.
+- Once I have fully traversed the tree using BFS, I want to return the main list, 'res'.
+  
