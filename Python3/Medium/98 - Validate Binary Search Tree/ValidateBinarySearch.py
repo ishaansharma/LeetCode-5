@@ -25,11 +25,16 @@ class Solution:
 
 # SECOND ATTEMPT
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode], less=-inf, greater=inf) -> bool:
-        if not root:
-            return True
-        if less >= root.val or greater <= root.val:
-            return False
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        stack = [(root, -float('inf'), float('inf'))]
         
-        return self.isValidBST(root.left, less, root.val) and self.isValidBST(root.right, root.val, greater)
-        
+        while stack:
+            node, least, greatest = stack.pop()
+            if node.val <= least or node.val >= greatest:
+                return False
+            if node.left:
+                stack.append((node.left, least, node.val))
+            if node.right:
+                stack.append((node.right, node.val, greatest))
+        return True
+
