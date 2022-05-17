@@ -1,0 +1,23 @@
+1448 - Count Good Nodes in Binary Tree
+
+  Given a binary tree root, a node X in the tree is named good if in the path from root to X 
+  there are no nodes with a value greater than X.
+  
+  Return the number of good nodes in the binary tree.
+  
+  Constraints:
+
+  The number of nodes in the binary tree is in the range [1, 10^5].
+  Each node's value is between [-10^4, 10^4].
+  
+Time Complexity - O(n)          Space Complexity - O(n)
+- where 'n' is the amount of nodes
+
+
+Thought Process
+- For this question, I want to do recursive DFS.
+- I need to have a maximum value that will be used to compared with the 
+values in the tree.
+  - If I find a greater value than the current maximum value, I can
+  set that value to the maximum value.
+  
