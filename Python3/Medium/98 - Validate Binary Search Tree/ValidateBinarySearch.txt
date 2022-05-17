@@ -1,0 +1,41 @@
+98. Validate Binary Search Tree
+
+  Given the root of a binary tree, determine if it is a valid binary search tree (BST).
+
+  A valid BST is defined as follows:
+
+  The left subtree of a node contains only nodes with keys less than the node's key.
+  The right subtree of a node contains only nodes with keys greater than the node's key.
+  Both the left and right subtrees must also be binary search trees.
+  
+  Constraints:
+
+   The number of nodes in the tree is in the range [1, 104].
+   -231 <= Node.val <= 231 - 1
+   
+
+Time Complexity - O(n)              Space Complexity - O(n)
+- where 'n' is the amount of nodes
+
+
+Thought Process
+First Attempt
+- At first, I thought of solving this question through BFS.
+- I tinkered around with my code and thought that I can answer this question
+by simply comparing the parent node and the right/left child node.
+  - If the parent node was greater than the right child node or
+  the parent node was less than the left child node,  
+    - this would mean that it was invalid.
+- However, I failed to make note of one test case, in which the value of the left node of the 
+right subtree was less than the values of the nodes on the left subtree.
+  - This would mean that I had to set a maximum or a minimum depending on if I searched the right subtree
+  or the left subtree, which leads me to my second attempt.
+
+Second Attempt
+- This time, I decided to set a maximum and a minimum depending what side of the subtree it was.
+  - If I am traversing to the left, the minimum would be set to negative infinity and the maximum would
+  be set to the current node.
+  - If I am traversing to the right, the minimum would be set to the value of the current node and
+  the maximum would be set to infinity.
+- If the value of the left node is ever greater than the previous node or the value of the right node
+is ever less than the previous node, I would return False.
