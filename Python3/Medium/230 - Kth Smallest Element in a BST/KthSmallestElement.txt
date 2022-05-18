@@ -1,0 +1,32 @@
+230. Kth Smallest Element in a BST
+
+  Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
+
+  Constraints:
+
+  The number of nodes in the tree is n.
+  1 <= k <= n <= 104
+  0 <= Node.val <= 104
+
+
+Time Complexity - O(n)              Space Complexity - O(n)
+-> n is equal to the amount of nodes
+
+
+Thought Process
+- For this question, I need to use inorder DFS.
+- I can do it iteratively or recursively.
+
+ITERATIVE
+- I want to use a stack.
+- Go all the way to the leftmost node, then subtract k by one.
+- Check if k is equal to zero.
+  - When k is zero, it is the kth element in the tree.
+- If not, continue checking the nodes inorder.
+  - Left -> Node -> Right
+
+RECURSIVE
+- I can make an inorder traversal, which sorts the values of
+the nodes in the trees.
+- To return the kth number, I can return the 'k-1' index of the
+array.
