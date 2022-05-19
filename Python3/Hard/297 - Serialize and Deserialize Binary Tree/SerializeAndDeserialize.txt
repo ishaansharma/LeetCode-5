@@ -1,0 +1,33 @@
+297. Serialize and Deserialize Binary Tree
+
+  Serialization is the process of converting a data structure or object into a sequence of bits 
+  so that it can be stored in a file or memory buffer, or transmitted across a network connection link 
+  to be reconstructed later in the same or another computer environment.
+
+  Design an algorithm to serialize and deserialize a binary tree. There is no restriction on 
+  how your serialization/deserialization algorithm should work. You just need to ensure that a binary 
+  tree can be serialized to a string and this string can be deserialized to the original tree structure.
+
+  Constraints:
+
+  The number of nodes in the tree is in the range [0, 104].
+  -1000 <= Node.val <= 1000
+  
+Time Complexity - O(n)                Space Complexity - O(n)
+
+Thought Process
+Serialize
+- Use recursive preorder DFS, since node -> left -> right.
+- If the node is None, I can add "#" or any symbol to my result variable, 'res'.
+  - Also, I want to make sure that I return, because I know that the subchildren
+  of null is also null.
+- Otherwise, I can append the value of the node in string format to 'res'.
+- Return final output as string
+
+Deserialize
+- Convert the string to a list
+  - IMPORTANT -> I have to convert the nodes in the list to 'int' first, because
+  they are currently a 'str'.
+
+- If the string is "#" which is null, I can return None.
+  - Otherwise, first convert the string into a 'int' then to a node.
