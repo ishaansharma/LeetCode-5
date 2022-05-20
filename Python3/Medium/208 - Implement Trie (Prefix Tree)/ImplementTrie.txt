@@ -26,7 +26,7 @@ Thought Process
   - For each letter of the word I want to insert, I want to check if the letter is already in the trie.
     - If it is not, I can create a new node.
   - Then, I can move my current pointer to the next node.
-  - When I completely inserted the word in my trie, I want to set 'self.end' to True, meaning that the word
+  - When I completely inserted the word in my trie, I want to set 'cur.end' to True, meaning that the word
   is now complete.
 
   Search
@@ -34,9 +34,9 @@ Thought Process
   - For each letter of the word I want to search, I want to check if the letter is NOT in the trie.
     - If it is not, I can return False.
   - Then, I can move my current pointer to the next node.
-  - When I completely searched for the word in my trie, I can return 'self.end'.
-    - If 'self.end' is False, that means that I reached a partial match of the word.
-    - If 'self.end' is True, that means that I reached a full match of the word.
+  - When I completely searched for the word in my trie, I can return 'cur.end'.
+    - If 'cur.end' is False, that means that I reached a partial match of the word.
+    - If 'cur.end' is True, that means that I reached a full match of the word.
  
   StartsWith
   - This process is similar to the search function.
@@ -47,7 +47,7 @@ Thought Process
   - When I completely searched for the word in my trie meaning that the prefix is in the trie, I can return True.
 
 What is the Time and Space Complexity?
-  Time Complexity -> O(m*n) for insert and O(n) for search
-  Space Complexity -> O(m*n)
-    -> m is the max length
-    -> n is the amount of words
+  Time Complexity -> O(n) for insert and O(n) for search
+  Space Complexity -> O(m)
+    -> m is the total amount of nodes
+    -> n is the length of 'word'
