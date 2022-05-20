@@ -1,0 +1,49 @@
+211. Design Add and Search Words Data Structure
+
+  Design a data structure that supports adding new words and finding if a string matches any previously added string.
+
+  Implement the WordDictionary class:
+
+  WordDictionary() Initializes the object.
+  void addWord(word) Adds word to the data structure, it can be matched later.
+  bool search(word) Returns true if there is any string in the data structure that matches word 
+    or false otherwise. word may contain dots '.' where dots can be matched with any letter.
+ 
+ Constraints:
+
+  1 <= word.length <= 25
+  word in addWord consists of lowercase English letters.
+  word in search consist of '.' or lowercase English letters.
+  There will be at most 3 dots in word for search queries.
+  At most 104 calls will be made to addWord and search.
+  
+Thought Process
+  Insert
+  - Have a pointer that will start at root.
+    - The root is like a placeholder which will branch off into starting letters.
+  - For each letter of the word I want to insert, I want to check if the letter is already in the trie.
+    - If it is not, I can create a new node.
+  - Then, I can move my current pointer to the next node.
+  - When I completely inserted the word in my trie, I want to set 'self.end' to True, meaning that the word
+  is now complete.
+  
+  Search
+  - Have a pointer that will start at root
+  - Check if the value of the node is equal to ".".
+    - If so, I want to use recursion to keep checking until the values of the nodes after the "." are
+    the same values of 'word'.
+    - If not, I want to check if the value of the node is NOT equal to the value of 'word'.
+      - If it is equal, I want to move down to the next letter.
+  - When I completely searched for the word in my trie, I can return 'cur.end'.
+    - If 'cur.end' is False, that means that I reached a partial match of the word.
+    - If 'cur.end' is True, that means that I reached a full match of the word.
+
+Time Complexity 
+  - AddWord
+    -> O(m), where m is the length of the word
+  - Search
+    -> Average Case - O(m), where m is the length of the word
+    -> Worse Case - O(n), where n is all the nodes in the trie
+    
+Space Complexity
+- O(n), where n is the amount of nodes in the trie
