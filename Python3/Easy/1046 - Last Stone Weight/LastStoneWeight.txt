@@ -1,0 +1,34 @@
+1046. Last Stone Weight
+
+  You are given an array of integers stones where stones[i] is the weight of the ith stone.
+
+  We are playing a game with the stones. On each turn, we choose the heaviest two stones and 
+  smash them together. Suppose the heaviest two stones have weights x and y with x <= y. The result of this smash is:
+
+  If x == y, both stones are destroyed, and
+  If x != y, the stone of weight x is destroyed, and the stone of weight y has new weight y - x.
+  At the end of the game, there is at most one stone left.
+
+  Return the smallest possible weight of the left stone. If there are no stones left, return 0.
+  
+  Constraints:
+  1 <= stones.length <= 30
+  1 <= stones[i] <= 1000
+  
+
+Thought Process
+- Each turn, I have to choose the two heaviest stones and potentially destroy them.
+  - This means that I will have to pop the two heaviest stones.
+  - However, the heaviest stones are at the end of the heap.
+    - To pop the two heaviest stones, I want to first make all weights of the stones negative,
+    so now the heaviest stones are in the beginning of the heap.
+      - For example, [1, 3, 6, 9] -> [-9, -6, -3, -1]
+  - Popping both of them would assume that both stones have equal weight.
+    - In the case that both of them does NOT have the same weight, I can push onto the heap
+    the weight of the heaviest stone minus the weight of the second heaviest stone.
+  - There is still an edge case, which is when there are no stones in the heap.
+    - In this case, I can append '0' to the heap.
+      - This value will not affect the smallest weight of the stone.
+        - For example, say I have [1, 2, 2].
+          - [1, 2, 2] -> [-2, -2, -1] -> [-1] -> [-1, 0] 
+            - I will be returning the absolute value of the first value in the heap.
