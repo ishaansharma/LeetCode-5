@@ -1,0 +1,37 @@
+212. Word Search II
+
+  Given an m x n board of characters and a list of strings words, return all words on the board.
+
+  Each word must be constructed from letters of sequentially adjacent cells, 
+  where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+  
+  Constraints:
+
+  m == board.length
+  n == board[i].length
+  1 <= m, n <= 12
+  board[i][j] is a lowercase English letter.
+  1 <= words.length <= 3 * 104
+  1 <= words[i].length <= 10
+  words[i] consists of lowercase English letters.
+  All the strings of words are unique.
+
+Thought Process
+- For this question, since I am trying to find if a word exists in the board.
+  - Since I am checking letter by letter, I want to use a trie.
+  - First, I want to make a trie, consisting of all the words that I am looking up in the board.
+
+  Insert
+   - Have a pointer that will start at root.
+     - The root is like a placeholder which will branch off into starting letters.
+   - For each letter of the word I want to insert, I want to check if the letter is already in the trie.
+     - If it is not, I can create a new node.
+   - Then, I can move my current pointer to the next node.
+   - When I completely inserted the word in my trie, I want to set 'self.end' to True, meaning that the word
+   is now complete.
+
+- When using recursion to check the sequentially adjacent cells, I have to check if I am out of bounds.
+  1) If the value of the row that it is on is less than 0 or greater than the maximum amount of rows.
+  2) If the value of the column that it is on is less than 0 or greater than the maximum amount of columns.
+  3) Check if the cell that I am on is already visited.
+  4) Check if the cell that I am on matches the letter that I am looking for.
