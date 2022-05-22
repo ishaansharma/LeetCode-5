@@ -1,0 +1,33 @@
+973. K Closest Points to Origin
+
+  Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane 
+  and an integer k, return the k closest points to the origin (0, 0).
+
+  The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
+
+  You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
+  
+  Constraints:
+
+  1 <= k <= points.length <= 104
+  -104 < xi, yi < 104
+  
+  
+Thought Process
+- Since I am returning the kth closest points, I can use a heap.
+- First, I want to calculate the distance for each of the points.
+  - I want to append the distance, x, and y to a empty list, 'values'.
+- Now, I will create a new empty list, 'res' to store all the coordinates
+that I will be returning.
+- I can first heapify 'values'.
+  - Now, all of the distances are sorted from least to greatest.
+- To return the first k closest points, I can pop 'k' amount the points from
+from 'values' and then append the x and y to my result variable, 'res'.
+- After popping the first k closest points, I can return 'res'. 
+
+Time Complexity - O(nlogk)
+  - Heapify -> O(n)
+    -> n = amount of points
+  - Pop -> O(logk)
+    -> k = k closest points
+Space Complexity - O(n)
