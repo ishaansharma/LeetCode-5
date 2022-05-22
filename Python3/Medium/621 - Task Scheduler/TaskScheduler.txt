@@ -1,0 +1,45 @@
+621. Task Scheduler
+
+  Given a characters array tasks, representing the tasks a CPU needs to do, where each 
+  letter represents a different task. Tasks could be done in any order. Each task is done 
+  in one unit of time. For each unit of time, the CPU could complete either one task or just 
+  be idle.
+
+  However, there is a non-negative integer n that represents the cooldown period between 
+  two same tasks (the same letter in the array), that is that there must be at least n 
+  units of time between any two same tasks.
+
+  Return the least number of units of times that the CPU will take to finish all the given tasks.
+  
+  Constraints:
+
+  1 <= task.length <= 104
+  tasks[i] is upper-case English letter.
+  The integer n is in the range [0, 100].
+
+
+Thought Process
+- I can use a heap and queue.
+- First, I have to find how much times each value in the array tasks appeared.
+  - I can use Counter().
+- Since I have to finish all the tasks and each time a value appears will decrease by
+one each time it completes, I can use a max heap.
+- Now, I need to set up a variable 'time' that will keep track of the amount of time the CPU will take
+and 'q', a empty queue.
+- I want to keep iterating until both the heap and queue is empty.
+  - Each time I iterate, I need to iterate the time by one. 
+  - If there is a value in the heap, there is a task the CPU has to do.
+    - I can add the task to the queue.
+      - Two things I have to note is when adding the task to the queue is... 
+        - How many times the task can be completed again
+        - Cooldown period, 'n'
+  - Now, I can move on to the queue. I can first check if the queue is empty.
+    - If not, I want to check if the cooldown period is up, by checking if the time 
+    it can work again is equal to the cooldown period.
+      - Then, I can push to the heap how much this task can be completed again.
+- After completing all of the tasks, I want to return the amount of time that the CPU took
+to complete all the tasks, which is 'time'.
+
+Time Complexity - O(n + nlogn)
+Space Complexity - O(n)
+  -> n is equal to the amount of characters array tasks
