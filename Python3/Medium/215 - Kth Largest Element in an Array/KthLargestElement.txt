@@ -1,0 +1,24 @@
+215. Kth Largest Element in an Array
+
+  Given an integer array nums and an integer k, return the kth largest element in the array.
+
+  Note that it is the kth largest element in the sorted order, not the kth distinct element.
+  
+  Constraints:
+  1 <= k <= nums.length <= 104
+  -104 <= nums[i] <= 104
+
+Thought Process
+- If I want to return the kth largest element, I can use heap sort.
+- First, I can heapify the array.
+  - To find the kth largest element, I have to make the size of the heap the same size
+  as 'k'.
+    - After heapifying, the heap is sorted from least to greatest.
+    - So while the size of the heap is greater than 'k', I can keep popping the first value
+    in the heap, which is the current smallest value in the heap.
+  - Once the size of the heap is the same size as 'k', I can return the first value in the heap.
+
+
+Time Complexity - O(nlogn)
+  Heapify -> O(n)
+  Pop -> O(logn)
