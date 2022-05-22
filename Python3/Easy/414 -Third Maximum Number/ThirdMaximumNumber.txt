@@ -1,0 +1,33 @@
+414. Third Maximum Number
+
+  Given an integer array nums, return the third distinct maximum number in this array. If the third maximum does not exist, return the maximum number.
+  
+  Constraints:
+  1 <= nums.length <= 104
+  -231 <= nums[i] <= 231 - 1
+
+Thought Process
+- Since I am finding the third distinct maximum number, 
+  -> I can use a set to make sure there are no distinct numbers
+  -> I can use a heap to find the 'kth' maximum number, which in this case is 3.
+- First, I can make a empty min heap.
+  - I want to iterate through the set of the given array.
+    - If the length of the heap is less than 3, this means that I want more numbers
+    in the heap.
+      - Push the 'i'th number into the heap.
+    - Otherwise, if the length of the heap is greater than or equal to 3, I want to 
+    push and pop the 'i'th number.
+      -Why?
+        - I want to get rid of the least biggest number and then add the 'i'th number
+        into the heap.
+- After iterating through the given array, I have to check if the third maximum exists.
+  - If the third maximum exists, I can return the first value in the heap.
+- Otherwise, if the third maximum does NOT exist and the length of the heap is less than 3, 
+I can return the maximum value in the heap.
+ 
+
+Time Complexity - O(nlogk) -> O(nlog3) -> O(n)
+Space Complexity - O(n) 
+  -> n is equal to the amount of values in the array
+  -> k is equal to 3, the third distinct maximum number
+  
