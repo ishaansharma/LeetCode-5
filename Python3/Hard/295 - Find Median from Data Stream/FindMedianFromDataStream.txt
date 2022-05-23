@@ -1,0 +1,56 @@
+295. Find Median from Data Stream
+
+  The median is the middle value in an ordered integer list. If the size of the list is even, 
+  there is no middle value and the median is the mean of the two middle values.
+
+  For example, for arr = [2,3,4], the median is 3.
+  For example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.
+  Implement the MedianFinder class:
+
+  MedianFinder() initializes the MedianFinder object.
+  void addNum(int num) adds the integer num from the data stream to the data structure.
+  double findMedian() returns the median of all elements so far. Answers within 10-5 of the actual answer will be accepted.
+  
+  Constraints:
+  -105 <= num <= 105
+  There will be at least one element in the data structure before calling findMedian.
+  At most 5 * 104 calls will be made to addNum and findMedian.
+
+
+Thought Process
+MedianFinder()
+- I want to have two heaps, one of which is max heap and the other is min heap.
+  - The maxheap will be the portion with the lower half of the values and the minheap will
+  be the upper half of the values.
+    -> I will need to take the last number of the lower half of the values and the first number
+    of the upper half of the values.
+
+Add Num
+- I can iterate through the ordered integer list and add the integer to the max heap.
+- Next, I want to check if the last number of the max heap is greater than the first number of 
+the minheap.
+  - If so, this means that I have to pop the last number of the max heap and push it to the min heap,
+  because the values are not ordered from least to greatest.
+- Next, I want to check if the length of the min heap is longer than the max heap by two, and vice versa.
+  - Why longer by two specifically and not by one?
+    - The length of the ordered integer list might be odd, so there is a chance that the length of the heaps
+    is greater than each other by one.
+      - However, it can never be greater than two, because I want them to be as evenly divided as possible.
+  - If the length of the max heap is longer than the min heap by two, I have to pop the last value of the max heap
+  and then push that value to the min heap.
+  - If the length of the min heap is longer than the max heap by two, I have to pop the first value of the min heap
+  and then push that value to the max heap.
+
+findMedian()
+- I want to check which length of the heap is greater than each other.
+- If the length of the min heap is greater, then I would want to return the first value in the min heap.
+- If the length of the max heap is greater, then I would want to return the last value in the max heap.
+- If the length of the heaps are equal to each other, this means that the length of the ordered integer list is even,
+which means that I would want to return the result of last value of the max heap added to the first value of the min heap  
+divided by two.
+ 
+Time Complexity 
+Add Num -> O(logn), where n is equal to the amount of values
+  - Pushing and popping in a heap takes O(logn) time complexity
+findMedian() -> O(1) 
+Space Complexity - O(n)
