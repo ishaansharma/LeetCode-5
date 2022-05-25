@@ -1,0 +1,31 @@
+90. Subsets II
+
+  Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
+  The solution set must not contain duplicate subsets. Return the solution in any order.
+  
+  Constraints:
+  1 <= nums.length <= 10
+  -10 <= nums[i] <= 10
+
+Thought Process
+- I want to return all possible subsets, except duplicate subsets.
+- I can use recursive backtracking. I included a diagram below.
+- For each element in the integer array nums,
+  - I want to add the element to my current subset.
+  - Then, I will use recursion to continue from 'i + 1'
+  - After finding all possible subsets for the element, I want to backtrack
+  by popping the most recent value from my current subset.
+- When 'i' is equal to the length of 'nums', I want to add the current subset to my result variable, 'res',
+and return.
+- To avoid duplicate subsets, after I find the combination 'x', I want
+to skip all future occurences of 'x'.
+  - To skip only all future occurences of 'x', I want to sort the integer array nums in ascending order.
+
+
+Diagram [1,2,2]
+                                                                  []
+                                                     [1]          |         []
+                                            [1,2]     |        [1]          [2]    |    []
+                                    [1,2,2] | [1,2]       [1,2] | [1]   [2,2] | [2]    [2] | []
+
+Time Complexity - O(n*2^n)
