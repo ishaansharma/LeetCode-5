@@ -1,0 +1,34 @@
+39. Combination Sum
+
+  Given an array of distinct integers candidates and a target integer target, return a 
+  list of all unique combinations of candidates where the chosen numbers sum to target. 
+  You may return the combinations in any order.
+  The same number may be chosen from candidates an unlimited number of times. Two combinations 
+  are unique if the frequency of at least one of the chosen numbers is different.
+  It is guaranteed that the number of unique combinations that sum up to target is less than 
+  150 combinations for the given input.
+  
+  Constraints:
+  1 <= candidates.length <= 30
+  1 <= candidates[i] <= 200
+  All elements of candidates are distinct.
+  1 <= target <= 500
+
+Thought Process
+- I want all the unique combinations of candidates to be equal to the target.
+  - Therefore, when the total sum, 'total', is equal to the target, 'target', I
+  want to append the list of candidates to the result variable, 'res'.
+- If the sum of the candidates are greater than the target, I want to
+move back and try the next candidate in the array.
+- After iterating through all possible combinations, I want to return the result
+variable, 'res'.
+
+Diagram   [2,3,6,7] Target: 7
+                                                                    []
+                                    [2]                             |                        []
+                        [2,2]        |              [2]                           [3]        |              []
+             [2,2,2]     |        [2,2]      [2,3]   |       [2]            [3,3] |  [3,6]            [6]    |         []
+     [2,2,2,2]                [2,2,3] | [2,2]    X       [2,3,3] | [2,3] [3,3,3]       X               X          [7]  |   []
+        X                     GOOD        X                 X         X       X                                  GOOD        X
+Final Answer: [[2,2,3], [7]]
+
