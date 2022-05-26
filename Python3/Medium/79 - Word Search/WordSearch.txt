@@ -1,0 +1,26 @@
+79. Word Search
+
+  Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+  The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are 
+  horizontally or vertically neighboring. The same letter cell may not be used more than once.
+  
+  Constraints:
+  m == board.length
+  n = board[i].length
+  1 <= m, n <= 6
+  1 <= word.length <= 15
+  board and word consists of only lowercase and uppercase English letters.
+
+Thought Process
+- I will use recursive backtracking to solve this problem.
+- In each of the recursive call,
+  - I want to check if the character is out of bounds, has already
+  been visited, or the character is not equal to the character that I want to find.
+    - If any of these conditions are true, I want to return False and backtrack. 
+  - I want to check four different directions (up, down, left, right).
+    - Everytime I am in a cell, I want to mark it as visited.
+
+Time Complexity - O(n * m * 4^n)
+  -> n is equal to the length of the row
+  -> m is equal to the length of the column
+  -> 4^n, because I am going recursively calling the function in 4 different directions.
